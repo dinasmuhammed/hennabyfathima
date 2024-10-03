@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henna by Fathima - Under Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-color: #FDE9CB; /* Light beige color from the image */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+/* Overlay for luxurious styling */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 600px;
+}
+h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px 0;
+    letter-spacing: 3px;
+}
+/* Notify Me Button */
+.notify-button {
+    background-color: #e3b341;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+.notify-button:hover {
+    background-color: #c99b32;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+/* Footer styling for credit */
+footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+footer a {
+    color: #e3b341;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <h1>Henna by Fathima</h1>
+        <p>Our website is currently under construction. We are crafting something truly special!</p>
+        <p>Countdown to Launch:</p>
+        <div class="timer" id="countdown">00d: 00h: 00m: 00s</div>
+        <button id="notify-btn" class="notify-button">Notify Me</button>
+    </div>
+
+    <!-- Footer with link -->
+    <footer>
+        <p>This website is developed by <a href="https://adwebcomicagency.vercel.app/" target="_blank">AD Web Comic Agency</a></p>
+    </footer>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        // Get today's date
+        const today = new Date();
+        
+        // Set the target date for the 2nd of next month
+        let targetDate = new Date(today.getFullYear(), today.getMonth() + 1, 2); // Next month's 2nd
+        
+        // Function to calculate and update the countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = `${days}d: ${hours}h: ${minutes}m: ${seconds}s`;
+
+            // If the countdown is over, display some text
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "We Are Live!";
+            }
+        }
+
+        // Update the countdown every 1 second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Notify button action
+        document.getElementById('notify-btn').addEventListener('click', function() {
+            alert('Thank you for your interest! We will notify you when the website goes live.');
+        });
+    </script>
+
+</body>
+</html>
